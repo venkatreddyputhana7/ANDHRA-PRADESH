@@ -58,7 +58,7 @@
   <div class="row">
     <div class="col-xs-12 col-lg-8 userEditProfile">
       <h3>Hi {{userDetail.FullName}},
-        <span class="pending"> Verification Pending</span>
+        <span class="pending"> {{userDetail.Status}}</span>
       </h3>
       <br>
       <div class="row">
@@ -146,8 +146,8 @@
           <div class="btnTop">
               <button mat-raised-button color="primary" *ngIf="!isAdmin" (click)="updUser()">Update</button>
               <button mat-raised-button color="warn" *ngIf="!isAdmin" (click)="back()">Back</button>
-              <button mat-raised-button color="primary" *ngIf="isAdmin">Verified</button>
-              <button mat-raised-button color="warn" *ngIf="isAdmin">Block</button>
+              <button mat-raised-button color="primary" *ngIf="isAdmin" (click)="UpdateStatus('Verified')">Verified</button>
+              <button mat-raised-button color="warn" *ngIf="isAdmin" (click)="UpdateStatus('Block')">Block</button>
             </div>
 
         </div>
@@ -167,16 +167,8 @@
             <input matInput placeholder="Cast" [(ngModel)]="userDetail.Cast" required>
           </mat-form-field> -->
 
-          <mat-form-field  *ngIf="!isAdmin">
-              <mat-select placeholder="Select Cast" [(ngModel)]="userDetail.Cast" [ngModelOptions]="{standalone: true}" required>
-                <mat-option value="Brahmana">Brahmana</mat-option>
-                <mat-option value="Chowdary">Chowdary</mat-option>
-                <mat-option value="Kaapu">Kaapu</mat-option>
-                <mat-option value="Komiti">Komiti</mat-option>
-                <mat-option value="Kshatriya">Kshatriya</mat-option>
-                <mat-option value="Reddy">Reddy</mat-option>
-                <mat-option value="Velama">Velama</mat-option>
-              </mat-select>
+          <mat-form-field  *ngIf="!isAdmin">             
+              <input matInput placeholder="Cast" [(ngModel)]="userDetail.Cast" required>
             </mat-form-field>
 
           <div *ngIf="isAdmin">

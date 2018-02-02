@@ -30,11 +30,11 @@ export class HomeServices{
         .map(res=>res.json());
     }
 
-    updateUser(ApocUser){
+    updateUser(ApocUser, id){
         var headers = new Headers();
         headers.append('Content-Type', 'application/json');
         ApocUser.Updated_Dt = Date.now();
-        return this.http.put(AppSettings.API_ENDPOINT + '/user/',JSON.stringify(ApocUser), {headers:headers})
+        return this.http.put(AppSettings.API_ENDPOINT + '/user/'+ id,JSON.stringify(ApocUser), {headers:headers})
         .map(res=>res.json());
     };
 

@@ -67,14 +67,37 @@ export class EditUserProfileComponent {
     //   uss.Distict =  this.userDetail.Distict;
     //   uss.EmainID =  this.userDetail.EmainID;
     //   uss.FullName =  this.userDetail.FullName;
-        this.homeService.updateUser(this.userDetail)
+        this.homeService.updateUser(this.userDetail,this.userid )
         .subscribe(user => {
             console.log(user);
-            this.userDetail = user;
+            //this.userDetail = user;
             //this.userDetail.DOB = new Date(this.userDetail.DOB).toLocaleDateString();
-            alert('Updated Successful');
-            console.log(this.userDetail._id)
-            this.router.navigate(['/user/'+this.userDetail._id]);
+            if (user.n > 0) {
+                alert('Updated Successful');
+                console.log(this.userDetail._id)
+                this.router.navigate(['/user/' + this.userid]);
+            }
+            else {
+                alert('No Changes');
+            }
+        });
+    }
+
+    UpdateStatus(status:string){
+        this.userDetail.Status = status;
+        this.homeService.updateUser(this.userDetail,this.userid )
+        .subscribe(user => {
+            console.log(user);
+            //this.userDetail = user;
+            //this.userDetail.DOB = new Date(this.userDetail.DOB).toLocaleDateString();
+            if (user.n > 0) {
+                alert('Updated Successful');
+                console.log(this.userDetail._id)
+                this.router.navigate(['/admin']);
+            }
+            else {
+                alert('No Changes');
+            }
         });
     }
     

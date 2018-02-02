@@ -73,7 +73,8 @@ export class AdminDashbordComponent{
             data.AadharCardNum = users[i].AadharCardNum;
             data.JoinDate = users[i].Added_Dt;
             data.Telephone = users[i].Telephone;
-            data.Status = users[i].isPaymentMade;
+            data.Status = users[i].Status;
+            data.isPaymentMade = users[i].isPaymentMade;
             data.ApocID = users[i].ApocID;
             data._userid = users[i]._id;
             _userdata.push(data);
@@ -132,5 +133,6 @@ export class UserData {
   JoinDate:Date;
   Status:string;
   ApocID:string;
+  isPaymentMade:boolean;
   _userid:string;
 }

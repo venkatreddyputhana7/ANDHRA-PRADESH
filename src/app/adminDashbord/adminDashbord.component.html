@@ -165,8 +165,9 @@
           <ng-container matColumnDef="Status" class="ml-auto" style="float:right;">
             <mat-header-cell *matHeaderCellDef mat-sort-header style="float:right;"> Status </mat-header-cell>
             <mat-cell *matCellDef="let row">
-              <span *ngIf="row.Status" style="color:green;">Pending</span>
-              <span *ngIf="!row.Status" style="color:red;">Payment Failed</span>
+                <span *ngIf="row.Status" style="color:green;">{{row.Status}}</span>
+              <span *ngIf="row.isPaymentMade" style="color:green;">Payment Done</span>
+              <span *ngIf="!row.isPaymentMade" style="color:red;">Payment Failed</span>
             </mat-cell>
           </ng-container>
 
